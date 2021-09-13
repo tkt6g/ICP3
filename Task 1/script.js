@@ -3,7 +3,7 @@ const game = () => {
     let computerScore = 0;
   
   
-    // Function to 
+
     const playGame = () => {
         const rockBtn = document.querySelector('.rock');
         const paperBtn = document.querySelector('.paper');
@@ -11,13 +11,12 @@ const game = () => {
         const playerOptions = [rockBtn,paperBtn,scissorBtn];
         const computerOptions = ['rock','paper','scissors']
           
-        // Function to start playing game
+
         playerOptions.forEach(option => {
             option.addEventListener('click',function(){
-                const choiceNumber = Math.floor(Math.random()*3);
-                const computerChoice = computerOptions[choiceNumber];
-  
-                // Function to check who wins
+                const choice = Math.floor(Math.random()*3);
+                const computerChoice = computerOptions[choice];
+
                 winner(this.innerText,computerChoice)
                   
           
@@ -25,58 +24,54 @@ const game = () => {
         })
           
     }
-  
-    // Function to decide winner
-    const winner = (player,computer) => {
+
+    const winner = (playerChoice,computerChoice) => {
         const result = document.querySelector('.result');
         const playerScoreBoard = document.querySelector('.p-scorecount');
         const computerScoreBoard = document.querySelector('.c-scorecount');
-        player = player.toLowerCase();
-        computer = computer.toLowerCase();
-        if(player === computer){
-            result.textContent = 'Tie'
+        playerChoice = playerChoice.toLowerCase();
+        computerChoice = computerChoice.toLowerCase();
+        if(playerChoice === computerChoice){
+            result.textContent = "It's a Tie. Choose another option."
         }
-        else if(player == 'rock'){
-            if(computer == 'paper'){
-                result.textContent = 'Computer Won';
+        else if(playerChoice == 'rock'){
+            if(computerChoice == 'paper'){
+                result.textContent = 'Computer has Won. Better luck next time.';
                 computerScore++;
                 computerScoreBoard.textContent = computerScore;
   
             }else{
-                result.textContent = 'Player Won'
+                result.textContent = 'Congrats!! You have won!!!'
                 playerScore++;
                 playerScoreBoard.textContent = playerScore;
             }
         }
-        else if(player == 'scissors'){
-            if(computer == 'rock'){
-                result.textContent = 'Computer Won';
+        else if(playerChoice == 'scissors'){
+            if(computerChoice == 'rock'){
+                result.textContent = 'Computer has Won. Better luck next time.';
                 computerScore++;
                 computerScoreBoard.textContent = computerScore;
             }else{
-                result.textContent = 'Player Won';
+                result.textContent = 'Congrats!! You have won!!!';
                 playerScore++;
                 playerScoreBoard.textContent = playerScore;
             }
         }
-        else if(player == 'paper'){
-            if(computer == 'scissors'){
-                result.textContent = 'Computer Won';
+        else if(playerChoice == 'paper'){
+            if(computerChoice == 'scissors'){
+                result.textContent = 'Computer has Won. Better luck next time.';
                 computerScore++;
                 computerScoreBoard.textContent = computerScore;
             }else{
-                result.textContent = 'Player Won';
+                result.textContent = 'Congrats!! You have won!!!';
                 playerScore++;
                 playerScoreBoard.textContent = playerScore;
             }
         }
     }
-  
-  
-    // Calling playGame function inside game
+
     playGame();
       
 }
-  
-// Calling the game function
+
 game();
